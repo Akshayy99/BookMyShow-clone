@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+	<h1>Hi {{username}}</h1>
+	{% for i in range(n) %}
+	<p class="lead">Your booking is {{var[i][1]}} &nbsp; {{var[i][2]}} &nbsp; {{var[i][3]}} &nbsp; {{var[i][4]}} &nbsp;</p>
+</div>

@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+	<h1>Change Movie</h1>
+	<p class="lead">You selected to change {{ movie[1] }}</p>
+</div>
+
+<div class="jumbotron">
+	<form action="{{ url_for('change') }}" method="POST">
+		<input type="hidden" name="md" value="{{movie[0]}}">
+		Movie Name &nbsp; : &nbsp;<input type="text" name="mvn" value="{{movie[1]}}"> <br>
+		Movie Desc &nbsp; : &nbsp; &nbsp;<input type="text" name="mvd" value="{{movie[2]}}"> <br>
+		Movie Link &nbsp; : &nbsp; &nbsp;<input type="text" name="mvl" value="{{movie[3]}}"> <br>
+		<div id="showtimingsWrapper">
+			<input type="text" name="s1" class="showtimings">
+		</div>
+	<input type="Submit" value="Submit">
+	</form>
+	<div class="btn btn-primary" onclick="lolwut()"></div>
+
+</div>
+<script type="text/javascript">
+	function lolwut(argument) {
+		var curr = $(".showtimings").last().attr("name");
+		curr = curr.slice(1)
+		$("#showtimingsWrapper").append('<br><input type="text" name="s'+ (parseInt(curr) + 1) + '" class="showtimings">')
+	}
+</script>
+{% endblock %}

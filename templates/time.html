@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+	<h1>Select Show-Time</h1>
+	<p class="lead">You selected {{ x[0][1] }}</p>
+</div>
+
+
+<div class="jumbotron">
+	<input type="text" name="dtt" id="x" onchange="fn()">
+	<br>
+	<br>
+	{% for time in t %}
+	<form action="{{ url_for('seat') }}" method="POST">
+		<input type="hidden" name="dtt" value="" class="y">
+		<input type="hidden" name="abc" value="{{x[0][0]}}">
+		<br>
+		<input type="hidden" name="efg" value="{{time[0]}}">
+		<button class="btn" type="submit">{{ time[0] }}</button>
+	</form>
+	{% endfor %}
+
+
+</div>
+<script type="text/javascript">
+	function lol(t) {
+			this.value = $("#x").val()
+			console.log(this)
+		}	
+	function fn() {
+		$(".y").each(lol);
+	}
+</script>
+{% endblock %}

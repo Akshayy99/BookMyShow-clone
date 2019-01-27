@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% include 'includes/_navbar.html' %}	<div class="jumbotron">
+		<h1>Select seats</h1>
+	<form method='GET' action='/confirm'>
+		{% for seat in range(numb) %}
+		{% if seat%4==0 %}
+		&nbsp;
+		{%  endif %}
+		{% if seat%8==0 %}
+		<br>
+		{% endif %}
+		{% if va[seat][1] == "occupied" %}
+		<input type="checkbox" name="seat" value={{va[seat][0]}} disabled>
+		{% else %}
+		<input type="checkbox" name="seat" value={{va[seat][0]}}>
+		{% endif %}
+		{% endfor %}
+		<br>
+		<p> Screen this way</p>
+		<br>
+
+		<input type="hidden" name="shwd" value="{{shwd}}"> <!-- shwd {{ shwd }} -->
+		<input type="hidden" name="md" value="{{md}}"> <!-- md {{ md }} -->
+		<input type="hidden" name="dtt" value="{{dtt}}"> <!-- dtt {{ dtt }} -->
+		<input type="submit" value="Submit">
+	</form>
+</div>
+{% endblock %}
